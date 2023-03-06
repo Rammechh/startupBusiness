@@ -26,11 +26,15 @@ class Review(models.Model):
         ('up', 'up vote'),
         ('down', 'down_vote')
     )
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     body = models.TextField(null=True, blank=True)
     value = models.CharField(max_length=200, choices=vote_type)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True, editable=False)
+
+    class Meta:
+        unique_together = [['owner', 'project']]
 
     def __str__(self):
         return self.value
