@@ -25,8 +25,10 @@ def project(request,pk):
         review.project = projects
         review.owner = request.user.profile
         review.save()
+        projects.getVoteCount
         messages.success(request, 'Your review successfully completed!')
         return redirect('project', pk=projects.id)
+
     context = {'project' : projects, 'tags' : tags, 'form' : form}
     return render(request, 'projects/single-project.html', context)
 
