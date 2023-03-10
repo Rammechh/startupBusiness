@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q
-from .forms import CustomUserCreationForm, ProfileForm, SkillForm
+from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from .utils import searchProfiles, paginateProfiles
 
 #Dont use name login we going to use bulit-in 
@@ -144,5 +144,36 @@ def inbox(request):
 
 @login_required(login_url='login')
 def viewMessage(request, pk):
-    context = {}
+    profile = request.user.profile
+    message = profile.messages.get(id = pk)
+    if message.is_read == False:
+        message.is_read = True
+        message.save()
+    context = {'message' : message}
     return render(request, 'users/message.html', context)
+
+def createMessage(request, pk):
+    # Get the Profile of user to whom we need to send message
+    recipient = Profile.objects.get(id = pk)
+    form = MessageForm()
+    # If user logged in get his profile
+    try:
+        sender = request.user.profile
+    except:
+        sender = None
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = sender
+            message.recipient = recipient
+            # If user logges in we are not fetching name and email in message_form.html
+            #  so getting it using his profile/sender id
+            if sender:
+                message.name = sender.name
+                message.email = sender.email
+            message.save()
+            messages.success(request, 'Your message was successfully sent!')
+            return redirect('user-profile', pk = recipient.id)
+    context = {'recipient' : recipient, 'form' : form}
+    return render(request, 'users/message_form.html', context)
