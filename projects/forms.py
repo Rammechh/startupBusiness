@@ -6,10 +6,8 @@ from django import forms
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        fields = ['title', 'featured_image','description', 'demo_link', 'source_link']
-        widgets = {
-            'tags' : forms.CheckboxSelectMultiple(),
-        }
+        fields = ['title','description','source_link','owner_name','featured_image', 'land_size','price', 'address', 'frontage', 'cmda_approved', 'direct_party']
+        
     
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)

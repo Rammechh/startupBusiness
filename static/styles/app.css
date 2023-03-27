@@ -481,7 +481,13 @@ img {
   color: var(--color-sub-light);
   margin-bottom: 1rem;
 }
-
+.singleProject__subtitle1 {
+  text-transform: uppercase;
+  font-size: 1;
+  font-weight: 550;
+  color: var(--color-sub-light);
+  margin-bottom: 1rem;
+}
 /*=======================
   Projects Page
 ========================*/
