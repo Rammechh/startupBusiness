@@ -421,7 +421,25 @@ img {
     order: 2;
   }
 }
-
+.singleProject__info{
+  font-size: 1;
+  font-weight: 600;
+  color: lightseagreen;
+  margin-bottom: 1rem;
+}
+.singleProject__subtitle1 {
+  text-transform: uppercase;
+  font-size: 1;
+  font-weight: 550;
+  color: var(--color-sub-light);
+  margin-bottom: 1rem;
+}
+.singleProject__title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: var(--color-sub);
+  margin-bottom: 3rem;
+}
 .singleProject__toolStack {
   margin-top: 2rem;
   margin-bottom: 4rem;
@@ -446,8 +464,8 @@ img {
 
 .singleProject__preview {
   height: 50vh;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: fill;
+  object-position: top center left;
   margin-bottom: 3rem;
   border-radius: 0.7rem;
 }
@@ -457,12 +475,6 @@ img {
   font-weight: 500;
 }
 
-.singleProject__title {
-  font-size: 3.6rem;
-  font-weight: 700;
-  color: var(--color-sub);
-  margin-bottom: 3rem;
-}
 
 .project__author{
   font-size: 1.4rem;
@@ -477,17 +489,11 @@ img {
 .singleProject__subtitle {
   text-transform: uppercase;
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-sub-light);
   margin-bottom: 1rem;
 }
-.singleProject__subtitle1 {
-  text-transform: uppercase;
-  font-size: 1;
-  font-weight: 550;
-  color: var(--color-sub-light);
-  margin-bottom: 1rem;
-}
+
 /*=======================
   Projects Page
 ========================*/

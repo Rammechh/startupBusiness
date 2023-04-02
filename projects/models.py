@@ -18,7 +18,7 @@ class Project(models.Model):
     land_size = models.CharField(max_length= 200, null=True, blank=True)
     price = models.CharField(max_length= 200, null=True, blank=True)
     address = models.TextField(null= True, blank= True)
-    frontage = models.IntegerField(default=0, null=True, blank=True)
+    frontage = models.CharField(max_length= 200, null=True, blank=True)
     cmda_approved = models.CharField(max_length= 200, null=True, blank=True)
     direct_party = models.CharField(max_length= 200, null=True, blank=True)
 
