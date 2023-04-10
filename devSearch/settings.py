@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-uq)a1ff34q_8r7m&+n#)0nsy#^7^fe$_hwg&5*+one2ebz*r^)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'rammechh.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'rammechh.pythonanywhere.com', 'propertysearchh.herokuapp.com/']
 
 
 # Application definition
@@ -129,23 +129,23 @@ WSGI_APPLICATION = 'devSearch.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'devsearch',
-       'USER': 'Ramkumar',
-       'PASSWORD': 'Ramk#1727',
-       'HOST': 'database-1.cdyubnamht0a.eu-north-1.rds.amazonaws.com',
-       'PORT': '5432',
-   }
-}
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR/ 'db.sqlite3',
-#     }
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'devsearch',
+#        'USER': 'Ramkumar',
+#        'PASSWORD': 'Ramk#1727',
+#        'HOST': 'database-1.cdyubnamht0a.eu-north-1.rds.amazonaws.com',
+#        'PORT': '5432',
+#    }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR/ 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -203,11 +203,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_FILE_OVERWRITE = False
-AWS_ACCESS_KEY_ID = 'AKIAYDEQ4XHP5DZJFAV4'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'devsearch-bucket2'
+# AWS_QUERYSTRING_AUTH = False
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_ACCESS_KEY_ID = 'AKIAYDEQ4XHP5DZJFAV4'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'devsearch-bucket2'
+
+
+if os.getcwd() == '/app':
+    DEBUG = False
