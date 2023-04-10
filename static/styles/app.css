@@ -437,7 +437,7 @@ img {
 .singleProject__title {
   font-size: 3.6rem;
   font-weight: 700;
-  color: var(--color-sub);
+  color: 1;
   margin-bottom: 3rem;
 }
 .singleProject__toolStack {
